@@ -8,6 +8,28 @@ html {
 .form-control{
   font-size: calc(16rem / 14);
 }
+button[data-submit="True"], form input[data-submit="True"] {
+  border: 3px solid transparent;
+  animation: submit 1s linear infinite;
+}
+@keyframes submit {
+  0%{
+      border-top-color: var(--main-border);
+  }
+  25%{
+      border-right-color: var(--main-border);
+  }
+  50%{
+      border-bottom-color: var(--main-color);
+  }
+  75%{
+      border-left-color: var(--main-color);
+  }
+  100%{
+      border-top-color: var(--main-color);
+  }
+  
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

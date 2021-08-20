@@ -27,6 +27,13 @@ document.addEventListener('readystatechange', event => {
             changeDarkModeIcon();
         })
 
+        $('form').on('submit', function (e) {
+            if (($(this).find('Input[type="submit"]')).attr('data-submit')){
+                e.preventDefault();
+                return;
+            }
+            ($(this).find('Input[type="submit"]')).attr('data-submit', 'True')        
+        })
     }
 });
 

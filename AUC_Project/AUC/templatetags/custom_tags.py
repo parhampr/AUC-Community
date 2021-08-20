@@ -7,12 +7,10 @@ register = template.Library()
 @register.filter(name='hide_email')
 def hide_email(value):
     hide = value[2:value.find("@")]
-    print(str(value))
     return str(value.replace(hide, "*"*(4 if len(hide)>4 else len(hide))))
 
 @register.filter(name='absolute_path')
 def absolute_path(path):
-    print(reverse('send_verify'))
     if path == reverse('register') or path == reverse('login'):
         return 'true'
     elif path == reverse('reset_password'):
