@@ -1,0 +1,435 @@
+.header-main {
+  border-bottom: 2px solid var(--main-border);
+  background-color: var(--search-area-bg);
+  box-shadow: 0 2px 6px 0 var(--shadow1), 0 24px 20px -24px var(--shadow2);
+}
+/* MAIN SECTION SETTINGS */
+.ls-cont {
+  background-color: var(--projects-section);
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 610px;
+}
+
+/* OVERLAY SETTINGS */
+.overlay {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  padding: 30px 0;
+  background: var(--color-common);
+  background-size: cover;
+  color: var(--projects-section);
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  z-index: 4;
+}
+
+.panel-active .overlay-content > span:nth-of-type(2) {
+  display: block;
+}
+
+.overlay-content > span:nth-of-type(2),
+.panel-active .overlay-content > span:nth-of-type(1) {
+  display: none;
+}
+
+.user-profile-container {
+  height: var(--profile-width);
+}
+
+.back-design {
+  position: relative;
+  width: calc(50% + var(--profile-width) / 2);
+  border-radius: 0px var(--profile-width) var(--profile-width) 0px;
+  background-color: var(--projects-section);
+  transform: translateX(-0.3px);
+  transition: 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+.panel-active .back-design {
+  transform: translate(calc(100.5% - var(--profile-width)), 0);
+  border-radius: var(--profile-width) 0px 0px var(--profile-width);
+}
+
+.login-image,
+label[for="userfile"] {
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(var(--profile-width) - 10px);
+  height: calc(var(--profile-width) - 10px);
+  transition: 0.6s;
+}
+
+#user-login,
+#user-signup {
+  height: inherit;
+  width: inherit;
+  border: 1px solid var(--projects-section);
+  background-color: var(--projects-section);
+}
+
+#user-login {
+  right: 0;
+  top: 0;
+}
+
+.login-image {
+  right: 5px;
+}
+
+label[for="userfile"] {
+  left: 120%;
+}
+
+.panel-active .login-image {
+  right: 120%;
+}
+
+.panel-active label[for="userfile"] {
+  left: 5px;
+}
+
+.icon-container {
+  top: 50%;
+  right: calc(50px - var(--profile-width));
+  transform: translateY(-50%);
+  width: calc(var(--profile-width) - 40px);
+  height: calc(var(--profile-width) - 50px);
+  background-color: var(--main-color);
+  border-radius: 0 var(--profile-width) var(--profile-width) 0;
+  z-index: -1;
+}
+
+#loader {
+  border: 16px solid transparent;
+  border-top: 20px solid var(--main-color);
+  width: var(--profile-width);
+  height: var(--profile-width);
+  animation: spin 1s 0.2s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* OVERLAY SETTINGS END*/
+.social-container a:hover,
+.social-container a:active {
+  background-color: var(--link-color-active-bg);
+  color: var(--link-color-active);
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.social-container a {
+  border: 1px solid var(--secondary-color);
+  height: 40px;
+  width: 40px;
+}
+.input > i,
+.show_hide_pass {
+  color: var(--main-color);
+}
+
+.sign-up-btn {
+  background-color: var(--color-common);
+  color: var(--search-area-bg) !important;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.error {
+  min-height: 30px;
+  border-radius: 10px;
+  color: #ff3333;
+}
+
+/* MAIN SECTION SETTINGS END */
+
+/* FOOTER SETTINGS */
+footer .content {
+  background-color: var(--wave4);
+}
+
+footer .content > p {
+  letter-spacing: 1px;
+  color: var(--app-container);
+}
+
+.signature {
+  font-size: 12px;
+  background-color: var(--search-area-bg);
+  color: var(--main-color);
+  width: fit-content;
+}
+/* FOOTER SETTINGS END */
+
+/* WAVES SETTINGS */
+.waves {
+  height: 15vh;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+/* Animation */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+  fill: var(--wave1);
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+  fill: var(--wave2);
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+  fill: var(--wave3);
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 18s;
+  fill: var(--wave4);
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* TRANSITION SETTINGS */
+
+.login-container,
+.panel-active .signup-container {
+  opacity: 1;
+  z-index: 2;
+}
+
+.signup-container,
+.panel-active .login-container {
+  opacity: 0;
+  z-index: 0;
+}
+
+.panel-active .overlay {
+  transform: translateX(calc(-700% / 3));
+}
+
+.panel-active .form-container {
+  transform: translateX(calc(300% / 7));
+}
+
+/* TRANSITION SETTINGS END */
+
+/* WAVE SETTINGS END */
+
+.input {
+  position: relative;
+  border-bottom: 2px solid var(--wave2);
+}
+
+input.form-control,
+input.form-control:focus {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--main-color);
+  box-shadow: none;
+}
+
+#infocus {
+  position: absolute;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0%;
+  background-color: var(--wave4);
+  transition: 0.4s;
+}
+
+.input > input.form-control:focus ~ #infocus,
+.input > input.form-control:not(:placeholder-shown) ~ #infocus {
+  height: 2.5px;
+  width: 100%;
+}
+
+.show_hide_pass > span {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 4px);
+  transform: translate(calc(-50% + 4px), -50%) rotate(45deg);
+  bottom: -2.5px;
+  height: 1.5px;
+  width: 20px;
+  border-radius: 4px;
+  background-color: var(--main-color);
+  transition: 0.4s;
+}
+
+.show_hide_pass.text > span {
+  width: 0;
+}
+
+.form-label {
+  text-align: start;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+.opaque-back {
+  position: absolute;
+  background-color: var(--color-common);
+  width: 100%;
+  height: 150px;
+  top: 0;
+}
+
+.opaque-back~.form-container{
+  top: 150px;
+}
+
+#m-toggler {
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 12px;
+  z-index: 9;
+}
+
+.circle {
+  background-color: var(--color-common);
+  opacity: 0.3;
+  height: 100%;
+  width: 12px;
+  border-radius: 12px;
+}
+
+#m-toggle_change {
+  left: 0;
+  top: 0;
+  opacity: 1 !important;
+  z-index: 2;
+  animation: toggle 0.6s ease-in-out 1 reverse;
+}
+
+.panel-active #m-toggle_change {
+  left: 100%;
+  transform: translateX(-100%);
+  animation-direction: normal;
+}
+
+@keyframes toggle {
+  0% {
+      left: 0;
+      transform: translateX(0);
+      width: 12px;
+  }
+
+  50% {
+      left: 0%;
+      transform: translateX(0);
+      width: 35px;
+  }
+
+  51% {
+      left: 100%;
+      transform: translateX(-100%);
+  }
+
+  100% {
+      left: 100%;
+      transform: translateX(-100%);
+      width: 12px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  :root {
+    --profile-width: 75px;
+  }
+
+  .icon-container {
+    border-radius: 50%;
+    top: 80%;
+    height: 25px;
+    width: 25px;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    z-index: 1;
+    border: 2px solid black;
+  }
+
+  #upload {
+    font-size: 1rem;
+  }
+  
+  .ls-cont{
+    min-height: 700px;
+  }
+  .form-container {
+    width: 100%;
+  }
+  .form-container.signup-container{
+    margin-top: 95px;
+  }
+  .form-container.login-container{
+    margin-top: 75px;
+  }
+  .panel-active .form-container{
+    transform: translateX(0);
+  }
+  .panel-active .overlay{
+    transform: translateX(0);
+  }
+  .overlay .overlay-content{
+    display: none !important;
+  }
+  .overlay{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: unset;
+    width: 100%;
+    padding: 0px 0;
+  }
+}

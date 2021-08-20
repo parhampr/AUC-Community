@@ -1,0 +1,68 @@
+<form action="{% url 'login' %}" class="text-center px-4 px-md-5 row g-3" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="next"
+        value="{% if request.POST.next %}{{ request.POST.next }}{% elif request.GET.next %}{{ request.GET.next }}{% else %}/{% endif %}" />
+    <div class="col-12">
+        <h2><b>Welcome Back !</b></h2>
+        <div class="social-container my-3">
+            <a href="#" class="social d-inline-flex justify-content-center align-items-center rounded-circle mx-2"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social d-inline-flex justify-content-center align-items-center rounded-circle mx-2"><i
+                    class="fab fa-google"></i></a>
+            <a href="#" class="social d-inline-flex justify-content-center align-items-center rounded-circle mx-2"><i
+                    class="fab fa-github"></i></a>
+        </div>
+        <span>or use your account</span>
+    </div>
+    <div class="col-12 text-start">
+        <label for="username" class="form-label">Username/Email</label>
+        <div class="input d-flex align-items-center">
+            <i class="fas fa-user" id="validate-icon"></i>
+            <input type="text" name="username" placeholder="xMark_eloN" autofocus spellcheck="false" required
+                id="login_username" autocomplete="username email" class="form-control">
+            <span id="infocus"></span>
+            <i class="fas fa-sync fa-spin d-none" id="user-check"></i>
+        </div>
+    </div>
+    <div class="col-12 text-start">
+        <label for="password" class="form-label">Password</label>
+        <div class="d-flex align-items-center input">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="l-userpass" name="password" placeholder="Password" required
+                autocomplete="current-password" class="form-control">
+            <span id="infocus"></span>
+            <div class="show_hide_pass position-relative" role="button">
+                <i class="fa fa-eye"></i>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 text-start">
+        <div>
+            <input class="form-check-input" type="checkbox" id="remember_me" name="remember_me" checked value="True">
+            <label class="form-label" for="remember_me">
+                Remember Me
+            </label>
+        </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn w-100 sign-up-btn"
+            style="letter-spacing: 2px; box-shadow: none !important;">Login</button>
+    </div>
+    <div class="col-12 text-center">
+        <a href="{% url 'reset_password' %}" class="form-label" style="color: var(--color-common);"><span><b>Forgot
+                    Password ?</b></span></a>
+    </div>
+    <div class="col-12">
+        <div class="error d-flex flex-column justify-content-center fw-bolder w-100 mt-2" style="font-size: 0.875rem;">
+            {% if messages %}
+            {% for message in messages %}
+            <span>{{message|safe}}</span>
+            {% endfor%}
+            {% endif %}
+        </div>
+    </div>
+</form>
+<Script>
+    document.getElementById('remember_me').addEventListener('change', () => this.value = (this.value == 'True' ? 'False' : 'True'))
+</Script>

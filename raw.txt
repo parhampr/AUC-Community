@@ -1,0 +1,152 @@
+<script>
+    function ClockSettings(timer) {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = (hours < 10 ? "0" + hours : hours) + ':';
+        minutes = (minutes < 10 ? "0" + minutes : minutes) + ':';
+        seconds = (seconds < 10 ? "0" + seconds : seconds);
+
+        document.getElementById("hours").innerText = hours
+        document.getElementById("minutes").innerText = minutes
+        document.getElementById("seconds").innerText = seconds;
+    }
+
+    (function startTimer(duration) {
+        duration = 600 - duration;
+        console.log(duration)
+        var timer = duration, hours, minutes, seconds;
+        document.querySelector('input[type="submit"]').disabled = true
+        var x = setInterval(function () {
+            ClockSettings(timer);
+            if (--timer < 0) {
+                document.querySelector('input[type="submit"]').disabled = false
+                clearInterval(x);
+            }
+        }, 1000);
+    })(parseInt("{{time.total_seconds}}"));
+
+</script>
+<script>
+function form_submit(t) {
+        if ($(t).text().trim() == 'YES')
+            {
+                $('#verify_email').after('<i class="fas fa-spin fa-sync"></i>')
+                $('form').data('submit', true).submit();
+            }        
+        else {
+            $('#verify_email').val('{{request.user.email}}')
+            $('.alert.alert-danger').fadeOut();
+        }
+    }
+    window.addEventListener('DOMContentLoaded', (e) => {
+        $('#verify_email').one('focus click', () => $('#verify_email').removeAttr('readonly'))
+        $('form').on('submit', function (e) {
+            if (Boolean($(this).data('submit')) == true || $('#verify_email').val().trim() == '{{request.user.email}}')
+                return;
+            $('#e-container').append($(`<div class="alert alert-danger" role="alert">The email entered is different from the email you previously registered with. Do you wish to continue?<br><a class="alert-link" onclick="form_submit(this)" role="button"> YES </a>&nbsp;&nbsp;&nbsp;<a class="alert-link" onclick="form_submit(this)" role="button"> NO </a></div>`))
+            e.preventDefault();
+        })
+    });
+</script>
+
+
+ANIME.JS
+script -->>
+anime({
+                    targets: '.row svg, #error-label',
+                    translateY: 10,
+                    autoplay: true,
+                    loop: true,
+                    easing: 'easeInOutSine',
+                    direction: 'alternate'
+                });
+
+                anime({
+                    targets: '#zero',
+                    translateX: 10,
+                    autoplay: true,
+                    loop: true,
+                    easing: 'easeInOutSine',
+                    direction: 'alternate',
+                    scale: [{ value: 1 }, { value: 1.4 }, { value: 1, delay: 250 }],
+                    rotateY: { value: '+=180', delay: 200 },
+                })
+
+
+ERROR 404 CSS -->>
+  body {
+            height: 100vh;
+        }
+
+        #handboy {
+            animation: swing ease-in-out 1.3s infinite alternate;
+            transform-origin: 98% 98%;
+            transform-box: fill-box;
+
+        }
+
+
+        #girllight {
+            animation: swing ease-in-out 1.3s infinite alternate;
+            transform-origin: 0% 97%;
+            transform-box: fill-box;
+        }
+
+        #hairgirl {
+            animation: swinghair ease-in-out 1.3s infinite alternate;
+            transform-origin: 60% 0%;
+            transform-box: fill-box;
+
+        }
+
+        #zero {
+            transform-origin: bottom;
+            transform-box: fill-box;
+
+        }
+
+        /*************swing************/
+        @keyframes swing {
+            0% {
+                transform: rotate(10deg);
+            }
+
+            100% {
+                transform: rotate(-10deg);
+            }
+        }
+
+
+        /*************swing hair************/
+        @keyframes swinghair {
+            0% {
+                transform: rotate(6deg);
+            }
+
+            100% {
+                transform: rotate(-6deg);
+            }
+        }
+
+        .error-details {
+            width: calc(100% - 16px);
+            margin: 0 8px;
+            min-height: 60px;
+            background-color: var(--search-area-bg);
+            border-radius: 20px 20px 0 0;
+            border-top: 2px solid var(--main-border);
+            padding: 10px;
+        }
+
+        .sign-up-btn {
+            width: 160px;
+            margin: 16px;
+            letter-spacing: 2px;
+            box-shadow: none !important;
+            background-color: var(--color-common);
+            color: var(--search-area-bg) !important;
+            text-transform: uppercase;
+            font-weight: bolder;
+        }

@@ -1,0 +1,139 @@
+.alert-box {
+  width: fit-content;
+  max-width: 500px;
+  min-height: 50px;
+  border-radius: 50px 10px 10px 50px;
+  background-color: var(--search-area-bg);
+  padding: 5px;
+  font-size: 0.925rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.6s;
+}
+
+.alert-box i {
+  font-size: 26px;
+}
+
+.alert-box.al-error {
+  border-bottom: 3px solid rgb(252, 39, 39);
+}
+
+.alert-box.al-success {
+  border-bottom: 3px solid #1cad6a;
+}
+
+.alert-box.al-info {
+  border-bottom: 3px solid #6375e9;
+}
+
+.alert-box.al-warning {
+  border-bottom: 3px solid var(--color-common);
+}
+
+.alert-content {
+  width: calc(100% - 20px);
+}
+
+.alert-icon {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.alert-text {
+  width: calc(100% - 50px);
+}
+
+.alert-box.al-error .alert-icon {
+  background-color: rgba(250, 0, 0, 0.123);
+}
+
+.alert-box.al-success .alert-icon {
+  background-color: rgba(28, 173, 105, 0.219);
+}
+
+.alert-box.al-info .alert-icon {
+  background-color: #6375e923;
+}
+
+.alert-box .fas.fa-exclamation-circle,
+.alert-box.al-error a,
+.al-error span span {
+  color: rgb(252, 39, 39) !important;
+}
+
+.alert-box .fas.fa-check-circle,
+.alert-box.al-success a,
+.al-success span span {
+  color: #1cad6a !important;
+}
+
+.alert-box .fas.fa-info-circle,
+.alert-box.al-info a,
+.al-info span span {
+  color: #6375e9 !important;
+}
+
+.alert-box.al-warning a,
+.al-warning span span {
+  color: var(--color-common) !important;
+}
+
+.btn-close {
+  font-size: 10px;
+}
+
+#alert-container {
+  left: 0;
+  bottom: 0;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1001;
+}
+
+.alert-box a:hover {
+  text-decoration: underline;
+}
+
+.alert-box a,
+.alert-box span span {
+  font-size: 1rem;
+}
+
+.closeSlide {
+  height: 0;
+  overflow: hidden;
+  min-height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  #alert-container {
+    bottom: unset;
+  }
+  .alert-box {
+    width: calc(100vw - 2rem);
+    font-size: 0.875rem;
+    border-radius: 10px;
+  }
+
+  .alert-icon {
+    height: 35px;
+    width: 35px;
+    margin: 0 5px;
+  }
+
+  .alert-box i {
+    font-size: 20px;
+  }
+
+  .alert-box a,
+  .al-warning span span {
+    font-size: 0.925rem;
+  }
+}

@@ -1,0 +1,158 @@
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>AUC Social Community</title>
+    <script type="text/javascript" src="{% static 'AUC/js/NightMode.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'AUC/css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'AUC/css/AuthenticateMain.css' %}">
+</head>
+
+<body>
+    <script type="text/javascript" src="{% static 'AUC/js/AuthChange.js' %}"></script>
+    {% include "AUC/loader.html" %}
+    <header class="d-flex justify-content-between m-3 align-items-center">
+        <a href="#">
+            <div class="d-flex flex-column flex-md-row align-items-center pe-3" style="margin-bottom: -6px;">
+                <div class="logo"></div>
+                <div class="font-text-md logo-text p-0 px-md-2"><b>aucConnect</b></div>
+            </div>
+        </a>
+        <div class="header-main text-center rounded-header-center w-75">
+            <div class="font-text-md"><b>Welcome to the AUC community</b></div>
+            <div class="font-text-sm text-secondary-custom" style="letter-spacing: 1px;">Become one of 647,254 amazing
+                members
+            </div>
+        </div>
+        <div class="d-flex align-items-center ps-3">
+            <label for="switch">
+                <h5 class="small me-2 d-sm-block d-none">
+                    <div>Night</div>
+                    <div>Mode</div>
+                </h5>
+            </label>
+            <i class="far fa-moon font-icon-md" title="NIGHT MODE IS OFF" id="switch" role="button"></i>
+        </div>
+    </header>
+    <!-- MAIN -->
+    <main class="d-flex justify-content-center">
+        <section class="my-5 mx-4 ls-cont" id="AuthConnect">
+            <div id="m-toggler" class="position-absolute d-sm-none d-flex justify-content-between #toggle_account_sign" role="button">
+                <div class="circle m-auth" id="m-login"></div>
+                <div class="circle position-absolute" id="m-toggle_change"></div>
+                <div class="circle m-auth" id="m-signup"></div>
+            </div>
+            {% if request.path|absolute_path != 'true' %}<div class="opaque-back"></div>{% endif %}
+            {% if request.path|absolute_path == 'true' %}
+            <div class="form-container login-container">
+                {% include "AUC/Auth/Login.html" %}
+            </div>
+            <div class="form-container signup-container">
+                {% include "AUC/Auth/Signup.html" %}
+            </div>
+            <div class="overlay d-flex flex-column justify-content-around text-center position-absolute">
+                <div class="user-profile-container w-100">
+                    <div class="back-design h-100">
+                        <div class="login-image position-absolute">
+                            <span class="position-absolute rounded-circle" id="loader" style="display: none;"></span>
+                            <img id="user-login" src="{% static 'AUC/images/user.png'%}" alt="User-Profile"
+                                class="rounded-circle position-absolute">
+                        </div>
+                        <label for="userfile" class="position-absolute" role="button">
+                            <img id="user-signup" src="{% static form.getImageURL %}" alt="User-Profile"
+                                class="rounded-circle">
+                            <div
+                                class="icon-container d-flex justify-content-center align-items-center position-absolute">
+                                <i id="upload" class="fas fa-camera font-icon-md"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="overlay-content d-flex flex-column w-100 px-3">
+                    <span class="font-text-subtitle"><b id="regis-tag">NEW HERE?</b></span>
+                    <span class="font-text-subtitle"><b id="login-tag">ONE OF US?</b></span>
+                    <button class="btn mt-2 btn-light-custom font-text-subtitle #toggle_account_sign"
+                        data-category="SIGN UP">
+                        SIGN UP</button>
+                </div>
+            </div>
+            {% else %}
+            <div class="form-container w-100">
+                {% if request.path|absolute_path == 'pReset' %}
+                {% include "AUC/Auth/password_reset.html" %}
+                {% elif request.resolver_match.url_name == 'password_reset_confirm' or link_verify %}
+                {% include "AUC/Auth/password_reset_verify.html" %}
+                {% elif request.path|absolute_path == 'pSent' or re_sent %}
+                {% include "AUC/Auth/password_reset_sent.html" %}
+                {% elif request.resolver_match.url_name == 'send_verify' %}
+                {% include "AUC/Auth/resend_verification.html" %}
+                {% endif %}
+            </div>
+            {% endif %}
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer class="font-text-sm">
+        <!--Waves Container-->
+        <div>
+            <svg class="waves position-relative w-100" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"
+                shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(84,58,183,1)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+        <!--Content starts-->
+        <div class="content text-center py-3">
+            <p class="fw-bolder mb-2">Open Source <b>X</b> Free Forever</p>
+            <div class="signature p-2 mx-auto rounded-3"><b>AUC COMMUNITY 2021 || ALL RIGHTS RESERVED</b></div>
+        </div>
+        <!--Content ends-->
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>var _0xcd77 = ['12XqQfsO', '56161ONXYmW', '{% url "userAvailability" %}', '25820PHOBoo', '212668tJAVNO', '90703qBFNlr', '38007ZsOfMr', '1kFSgDH', '{% static "AUC/images/user.png" %}', '1000567ZayIAH', '136835KhjjSI']; var _0x2747d1 = _0x5de2; (function (_0xb05303, _0x3d43a5) { var _0x3b7d66 = _0x5de2; while (!![]) { try { var _0x406cff = -parseInt(_0x3b7d66(0x16e)) + -parseInt(_0x3b7d66(0x174)) + -parseInt(_0x3b7d66(0x170)) + -parseInt(_0x3b7d66(0x176)) + parseInt(_0x3b7d66(0x175)) * -parseInt(_0x3b7d66(0x16d)) + -parseInt(_0x3b7d66(0x171)) * parseInt(_0x3b7d66(0x16f)) + parseInt(_0x3b7d66(0x173)); if (_0x406cff === _0x3d43a5) break; else _0xb05303['push'](_0xb05303['shift']()); } catch (_0x7cc184) { _0xb05303['push'](_0xb05303['shift']()); } } }(_0xcd77, 0x262c1)); function _0x5de2(_0x56f704, _0x2b7690) { return _0x5de2 = function (_0xcd771b, _0x5de24c) { _0xcd771b = _0xcd771b - 0x16d; var _0x571691 = _0xcd77[_0xcd771b]; return _0x571691; }, _0x5de2(_0x56f704, _0x2b7690); } var variableClassess = { 't': 'fas\x20fa-times', 'c': 'fas\x20fa-check', 'p': 'fas\x20fa-sync\x20fa-spin', 'ucu': _0x2747d1(0x177), 'df': _0x2747d1(0x172) };</script>
+    <script type="text/javascript" src="{% static 'AUC/js/AuthenticateProfile.js' %}"></script>
+    <script src="https://kit.fontawesome.com/b6f67b378e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        const img = document.getElementById('user-signup');
+        const file = document.getElementById('userfile');
+
+        file.addEventListener('change', function () {
+            const choosedFile = this.files[0];
+            if (choosedFile) {
+
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function () {
+                    img.setAttribute('src', reader.result);
+                });
+
+                reader.readAsDataURL(choosedFile);
+            }
+        });
+    </script>
+</body>
+
+</html>
