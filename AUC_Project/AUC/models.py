@@ -3,9 +3,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from autoslug import AutoSlugField
 from random import choice
-from os.path import join as path_join
+from os.path import isfile, join as path_join
 from os import listdir
-from os.path import isfile
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives, message

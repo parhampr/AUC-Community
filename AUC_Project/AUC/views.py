@@ -1,4 +1,3 @@
-from django.http.response import HttpResponseForbidden
 from django.utils import timezone
 from AUC.models import Profile
 from django.shortcuts import redirect, render
