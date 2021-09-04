@@ -92,8 +92,10 @@ def logout_view(request):
 
 @csrf_exempt
 def userCheck(request):
-    if request.is_ajax and request.method == 'POST':
+    if request.is_ajax or request.method == 'POST':
+        print(request.POST);
         username = request.POST.get("username_email")
+        print(username)
         try:
             user = Profile.objects.get(username=username)
         except Profile.DoesNotExist:
@@ -109,7 +111,7 @@ def password_reset_successfully(request):
     return HttpResponseRedirect(reverse('login'))
 
 @never_cache
-@login_required
+@login_required 
 def ReVerificationEmail(request):
     m = SendMessage(request)
     if request.user.Email_verified:
@@ -120,9 +122,9 @@ def ReVerificationEmail(request):
             return HttpResponseRedirect(reverse('send_verify'))
         email = request.POST.get('verify_email')
         if request.user.Unique_Email(email, commit=True):
-            request.user.last_verify_email = timezone.now()
             request.user.save()
             request.user.SendMail(title='AConfirmation', domain=get_current_site(request))
+            request.user.last_verify_email = timezone.now()
             return render(request, "AUC/AuthenticateProfile.html", {"re_sent": "an account verification"})
         m.Error("Email Address already exists with another account. Please logout & login with the associated email.")
     return render(request, "AUC/AuthenticateProfile.html", {"time": timezone.now() - request.user.last_verify_email})
