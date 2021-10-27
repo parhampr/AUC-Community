@@ -5,15 +5,14 @@ var auth = () => (window.location.href).includes('login')? ['', 'AUC Login'] : [
         document.title = c[1];
     },
     bullet_anim = () => {
-            var el = document.getElementById("m-toggle_change");
+            try {
+                var el = document.getElementById("m-toggle_change");
+            } catch (error) {
+                return;
+            }
             el.style.animation = 'none';
             el.offsetHeight; /* trigger reflow */
             el.style.animation = null; 
-
-        // document.getElementById("m-toggle_change").style.animationPlayState = "running"
-        // setTimeout(() => {
-        //     document.getElementById("m-toggle_change").style.animationPlayState = "paused"
-        // }, 600);
     }
 (function () {
     if ((window.location.href).includes("register")) change();

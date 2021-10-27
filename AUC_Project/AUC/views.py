@@ -130,4 +130,6 @@ def ReVerificationEmail(request):
     return render(request, "AUC/AuthenticateProfile.html", {"time": timezone.now() - request.user.last_verify_email})
 
 def testing(request):
+    if not request.user.is_authenticated:
+        SendMessage(request).Error(f"You are not currently logged in <br> <a href='/accounts/login/'>Click here to login</a>", extras='true')
     return render(request, "AUC/layout.html")

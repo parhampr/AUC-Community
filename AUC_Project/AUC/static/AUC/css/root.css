@@ -34,7 +34,7 @@ button[data-submit="True"], form input[data-submit="True"] {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #000 !important;
+  -webkit-text-fill-color: var(--main-color) !important;
   -webkit-box-shadow: 0 0 0px 1000px var(--switch-shadow) inset !important;
   margin: 0 0.375rem !important;
   box-shadow: 0 0 0 1000px var(--switch-shadow) inset !important;

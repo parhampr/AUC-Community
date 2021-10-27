@@ -13,6 +13,7 @@
   width: 768px;
   max-width: 100%;
   min-height: 610px;
+  transition: 0.9s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 /* OVERLAY SETTINGS */
@@ -26,7 +27,7 @@
   background-size: cover;
   color: var(--projects-section);
   transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: 4;
 }
 
@@ -143,7 +144,7 @@ label[for="userfile"] {
   bottom: 0;
   left: 0;
   width: 70%;
-  transition: all 0.6s ease-in-out;
+  transition: 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -323,7 +324,7 @@ input.form-control:focus {
   top: 0;
 }
 
-.opaque-back~.form-container{
+.opaque-back ~ .form-container {
   top: 150px;
 }
 
@@ -360,26 +361,26 @@ input.form-control:focus {
 
 @keyframes toggle {
   0% {
-      left: 0;
-      transform: translateX(0);
-      width: 12px;
+    left: 0;
+    transform: translateX(0);
+    width: 12px;
   }
 
   50% {
-      left: 0%;
-      transform: translateX(0);
-      width: 35px;
+    left: 0%;
+    transform: translateX(0);
+    width: 35px;
   }
 
   51% {
-      left: 100%;
-      transform: translateX(-100%);
+    left: 100%;
+    transform: translateX(-100%);
   }
 
   100% {
-      left: 100%;
-      transform: translateX(-100%);
-      width: 12px;
+    left: 100%;
+    transform: translateX(-100%);
+    width: 12px;
   }
 }
 
@@ -402,29 +403,29 @@ input.form-control:focus {
   #upload {
     font-size: 1rem;
   }
-  
-  .ls-cont{
-    min-height: 700px;
+
+  .panel-active .ls-cont {
+    min-height: 780px;
   }
   .form-container {
     width: 100%;
   }
-  .form-container.signup-container{
+  .form-container.signup-container {
     margin-top: 95px;
   }
-  .form-container.login-container{
+  .form-container.login-container {
     margin-top: 75px;
   }
-  .panel-active .form-container{
+  .panel-active .form-container {
     transform: translateX(0);
   }
-  .panel-active .overlay{
+  .panel-active .overlay {
     transform: translateX(0);
   }
-  .overlay .overlay-content{
+  .overlay .overlay-content {
     display: none !important;
   }
-  .overlay{
+  .overlay {
     top: 0;
     left: 0;
     right: 0;
